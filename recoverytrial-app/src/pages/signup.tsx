@@ -1,6 +1,6 @@
 import React from "react";
 
-type Props = {};
+interface Props {}
 
 const signup = (props: Props) => {
   return <div>signup</div>;
