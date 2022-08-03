@@ -28,8 +28,7 @@ const Login = (props: Props) => {
     <div>
       <Header />
       <main>
-        <img></img>
-        <div className="bg-gray-300 flex flex-col max-w-[246px] m-auto pt-8 rounded-xl justify-center items-center md:max-w-sm">
+        <div className="bg-gray-300 flex flex-col max-w-[246px] m-auto pt-8 rounded-xl justify-center items-center md:pb-2 md:max-w-sm">
           <form className="flex flex-col max-w-xs text-sm gap-2 md:text-base">
             <label className="">Email</label>
             <Input
@@ -47,7 +46,7 @@ const Login = (props: Props) => {
             <Button Type="submit" Text="Entrar" onClick={handleLogin} />
           </form>
 
-          <a className="text-xs underline mt-2 md:text-sm" href="#">
+          <a className="text-xs underline md:text-sm" href="#">
             Esqueci a senha
           </a>
 
