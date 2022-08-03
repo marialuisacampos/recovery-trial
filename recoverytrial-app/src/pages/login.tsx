@@ -30,7 +30,7 @@ const Login = (props: Props) => {
       <main>
         <div className="bg-gray-300 flex flex-col max-w-[246px] m-auto pt-8 rounded-xl justify-center items-center md:pb-2 md:max-w-sm">
           <form className="flex flex-col max-w-xs text-sm gap-2 md:text-base">
-            <label className="">Email</label>
+            <label>Email</label>
             <Input
               Type="text"
               Value={email}
