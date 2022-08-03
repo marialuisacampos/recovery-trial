@@ -21,6 +21,8 @@ module.exports = {
           100: "#ECECEC", //background
           200: "#525151", //text
           300: "#FFFFFF", //white
+          400: "#F5F5F5", //cinza mais claro
+          600: "#D7D6D6", //stroke
         },
       },
     },
