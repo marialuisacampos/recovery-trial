@@ -14,8 +14,8 @@ module.exports = {
           100: "#FF8484",
         },
         blue: {
-          100: "#34B8C4",
-          200: "#87CFD6", //azul mais claro
+          100: "#91D8DF", //mais claro
+          200: "#34B8C4", //mais escuro
         },
         gray: {
           100: "#ECECEC", //background
