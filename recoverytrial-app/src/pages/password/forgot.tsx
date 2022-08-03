@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Button from "../components/Button";
-import Error from "../components/Error";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Input from "../components/Input";
+import Button from "../../components/Button";
+import Error from "../../components/Error";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Input from "../../components/Input";
 
 interface Props {}
 
