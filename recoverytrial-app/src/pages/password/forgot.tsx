@@ -14,7 +14,7 @@ const Forgot = (props: Props) => {
   const handleForgot = (e: any) => {
     e.preventDefault();
     if (!email) {
-      setError("Preencha o seu email.");
+      setError("Preencha o seu email");
       return;
     }
   };

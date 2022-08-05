@@ -15,7 +15,7 @@ const Recover = (props: Props) => {
   const handleRecover = (e: any) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setError("As senhas precisam ser iguais.");
+      setError("As senhas precisam ser iguais");
     }
 
     if (!password || !confirmPassword) {

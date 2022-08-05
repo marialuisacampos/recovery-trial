@@ -16,7 +16,6 @@ const Login = (props: Props) => {
     e.preventDefault();
     if (!email || !password) {
       setError("Preencha todos os campos.");
-      return;
     }
   };
 
