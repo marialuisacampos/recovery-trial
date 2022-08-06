@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
+import LogoName from "../../components/logos/LogoName";
 
 interface Props {}
 
@@ -20,25 +21,29 @@ const Forgot = (props: Props) => {
   };
 
   return (
-    <main>
-      <Header />
-      <div className="bg-gray-300 flex flex-col max-w-[246px] m-auto pt-8 rounded-xl justify-center items-center md:max-w-sm px-8 text-center">
-        <form className="flex flex-col max-w-xs text-sm gap-2 md:text-base">
-          <h2 className="font-bold">Problemas para entrar?</h2>
-          <label className="my-2">
-            Digite seu email e te enviaremos um link para recuperar a sua senha
-          </label>
-          <Input
-            Type="text"
-            Value={email}
-            onChange={(e) => [setEmail(e.target.value), setError("")]}
-          />
-          <Error Message={error} />
-          <Button Type="submit" onClick={handleForgot} Text="Enviar" />
-        </form>
-      </div>
-      <Footer />
-    </main>
+    <div>
+      <Navbar />
+      <main className="">
+        <div className="bg-gray-300 flex flex-col max-w-[300px] m-auto pt-4 px-8 rounded-xl justify-center items-center md:pb-2 md:max-w-sm pb-4">
+          <LogoName />
+          <form className="flex flex-col max-w-xs text-sm gap-2 md:text-base pt-4">
+            <h2 className="font-bold">Problemas para entrar?</h2>
+            <p className="my-2">
+              Digite seu email e te enviaremos um link para recuperar a sua
+              senha
+            </p>
+            <Input
+              Type="text"
+              Value={email}
+              onChange={(e) => [setEmail(e.target.value), setError("")]}
+            />
+            <Error Message={error} />
+            <Button Type="submit" onClick={handleForgot} Text="Enviar" />
+          </form>
+        </div>
+        <Footer />
+      </main>
+    </div>
   );
 };
 

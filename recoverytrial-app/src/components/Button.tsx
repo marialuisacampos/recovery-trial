@@ -9,7 +9,7 @@ interface Props {
 const Button = ({ Text, onClick, Type }: Props) => {
   return (
     <button
-      className="bg-blue-100 rounded-full self-center px-4 mt-2 mb-4 text-sm md:text-base"
+      className="bg-blue-100 rounded-full self-center px-8 py-2 mb-2 text-base"
       type={Type}
       onClick={onClick}
     >

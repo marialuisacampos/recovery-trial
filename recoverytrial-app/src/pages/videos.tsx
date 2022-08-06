@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/Navbar";
 import Sidebar from "../components/videos/Sidebar";
 import Video from "../components/videos/Video";
 
