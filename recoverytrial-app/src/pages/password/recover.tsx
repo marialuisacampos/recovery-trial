@@ -31,7 +31,7 @@ const Recover = (props: Props) => {
       <main className="">
         <div className="bg-gray-300 flex flex-col max-w-[300px] m-auto pt-4 rounded-xl justify-center items-center md:pb-2 md:max-w-sm pb-4">
           <LogoName />
-          <form className="flex flex-col max-w-xs text-sm gap-2 md:text-base pt-4">
+          <form className="flex flex-col max-w-xs gap-2 pt-4">
             <Label Children="Nova senha:" />
             <Input
               Type="password"
