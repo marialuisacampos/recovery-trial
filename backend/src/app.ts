@@ -1,19 +1,19 @@
 import express from "express";
-import cors from "cors";
+import { Sequelize } from "sequelize";
 
 class App {
   public express: express.Application;
 
   public constructor() {
     this.express = express();
+
+    this.middlewares();
+    this.routes();
   }
 
   private middlewares(): void {
-    this.express.use(express.json);
-    this.express.use(cors());
+    this.express.use(express.json());
   }
-
-  private database(): void {}
 
   private routes(): void {
     this.express.get("/", (req, res) => {
@@ -21,3 +21,5 @@ class App {
     });
   }
 }
+
+export default new App().express;
