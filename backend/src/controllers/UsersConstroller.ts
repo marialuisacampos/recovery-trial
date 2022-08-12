@@ -69,6 +69,7 @@ class UserController {
   async delete(req: Request, res: Response) {
     const { userEmail } = req.params;
     await UserModel.destroy({ where: { email: userEmail } });
+    return res.status(204).send();
   }
 }
 
