@@ -41,10 +41,9 @@ const Forgot = (props: Props) => {
             <Button Type="submit" onClick={handleForgot} Text="Enviar" />
           </form>
         </div>
+        <Footer />
       </main>
-      <Footer />
     </div>
-
   );
 };
 
