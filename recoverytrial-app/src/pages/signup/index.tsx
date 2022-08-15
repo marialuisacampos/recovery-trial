@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import Error from "../../components/Error";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import { useForm } from "react-hook-form";
 
 interface Props {}
 
@@ -28,6 +29,32 @@ const Signup = (props: Props) => {
 
   const handleRegister = (e: any) => {
     e.preventDefault();
+    const regexEmail =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    if (
+      praticaAtividade == undefined ||
+      fraquezaMuscular == undefined ||
+      dificuldadeRespiratoria == undefined ||
+      perdaDeMemoria == undefined ||
+      acidenteEm12Meses == undefined ||
+      hipertensao == undefined ||
+      diabetes == undefined ||
+      doencasCardio == undefined ||
+      doencasPulmonares == undefined ||
+      nome == "" ||
+      email == "" ||
+      senha == "" ||
+      telefone == "" ||
+      idade == undefined ||
+      sexo == ""
+    ) {
+      setError("Preencha todos os campos.");
+    }
+
+    if (email && !email.match(regexEmail)) {
+      setError("Digite um email válido");
+    }
   };
 
   return (
@@ -388,9 +415,11 @@ const Signup = (props: Props) => {
               </div>
             </div>
 
-            <Error Message={error} />
+            <div className="flex flex-col">
+              <Error Message={error} />
 
-            <Button Text="Registrar" onClick={handleRegister} Type="submit" />
+              <Button Text="Registrar" onClick={handleRegister} Type="submit" />
+            </div>
           </form>
         </div>
       </main>
