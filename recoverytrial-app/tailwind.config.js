@@ -25,6 +25,9 @@ module.exports = {
           600: "#D7D6D6", //stroke
         },
       },
+      backgroundImage:{
+        'backgroundMain': "url('/backgroundMain.jpg')",
+      }
     },
   },
   plugins: [],
