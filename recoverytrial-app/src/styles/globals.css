@@ -9,6 +9,9 @@
   .label {
     @apply text-base font-extrabold;
   }
+  .containerBig {
+    @apply bg-gray-300 flex flex-col max-w-[300px] m-auto pt-4 px-8 rounded-xl justify-center items-center pb-4 md:pb-2 md:max-w-2xl;
+  }
 }
 
 body {
