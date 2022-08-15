@@ -24,21 +24,27 @@ export default function User(){
                                 <label htmlFor="fieldLastName"> Sobrenome </label>
                                 <input type="text" id='fieldLastName' />
 
-                                <label htmlFor="fieldNewPassword"> Nova senha </label>
-                                <input type="password" id='fieldNewPassword' />
-
-                                <label htmlFor="fildNewPasswordC"> Confirmação de senha </label>
-                                <input type="password" id='fieldNewPasswordC' />
-                            </div>
-                            
-                            <div className="flex flex-col gap-1 mt-3">
                                 <label htmlFor="fildMail"> Email </label>
                                 <input type="mail" className="w-80" id='fieldMail' />
 
                                 <label htmlFor="fildNumber"> Número </label>
                                 <input type="text" id='fieldNumber' />
+                            </div>
+                            
+                            <div className="flex flex-col gap-1 mt-3">
+
+                                <label htmlFor="fieldNewPassword"> Nova senha </label>
+                                <input type="password" className="w-80" id='fieldNewPassword' />
+
+                                <label htmlFor="fildNewPasswordC"> Confirmação de senha </label>
+                                <input type="password" id='fieldNewPasswordC' />
+
+                                <button className="mt-28 m-auto bg-blue-200 rounded-3xl w-40 h-8 hover:bg-blue-100
+                                transition duration-75"
+                                ><p className="text-white">Salvar</p></button>
 
                             </div>
+                            
 
                         </div>
                         
