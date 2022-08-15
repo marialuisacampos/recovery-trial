@@ -6,7 +6,7 @@ interface Props {
 
 const Error = ({ Message }: Props) => {
   return (
-    <span className="text-red-500 text-sm mt-2 text-center md:text-base">
+    <span className="text-red-500 text-sm mt-2 text-center md:text-base mb-2">
       {Message}
     </span>
   );
