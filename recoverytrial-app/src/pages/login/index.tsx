@@ -25,8 +25,7 @@ const Home: NextPage = () => {
   }, []);
   return (
     <div>
-  
-      <div className="mb-20">
+      <div className="mb-20 pt-44">
         <Navbar />
         <main className="">
           <div className="bg-gray-300 flex flex-col max-w-[300px] mx-auto pt-2 rounded-xl justify-center items-center md:pb-2 md:max-w-sm">

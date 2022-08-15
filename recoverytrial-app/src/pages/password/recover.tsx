@@ -28,7 +28,7 @@ const Recover = (props: Props) => {
   return (
     <div>
       <Navbar />
-      <main className="">
+      <main className="pb-20 pt-44">
         <div className="bg-gray-300 flex flex-col max-w-[300px] m-auto pt-4 rounded-xl justify-center items-center md:pb-2 md:max-w-sm pb-4">
           <LogoName />
           <form className="flex flex-col max-w-xs gap-2 pt-4">
