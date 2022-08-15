@@ -10,11 +10,9 @@ export default function User(){
             </div>
             <main>
                 <div className="bg-black h-screen flex flex-row">
-                    <div className="bg-gray-100 w-1/4">
 
-                        oi
-                    </div>
-                    <div className="bg-gray-400 w-3/4 flex flex-col items-center ">
+                    <div className="bg-gray-400 w-screen flex flex-col items-center ">
+
                         <p className="mt-10 mr- font-bold text-blue-200 text-lg">Informações pessoais</p>
                         <div className=" w-3/4 h-80 flex flex-row gap-32 border-t-2 border-pink-100 justify-center items-centerfirst-letter
                         mb-16">
