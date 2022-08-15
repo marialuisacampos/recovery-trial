@@ -61,7 +61,7 @@ const Signup = (props: Props) => {
     <div>
       <Navbar />
       <main className="pb-20 pt-44">
-        <div className="bg-gray-300 flex flex-col max-w-[300px] m-auto pt-4 px-8 rounded-xl justify-center items-center pb-4 md:pb-2 md:max-w-2xl">
+        <div className="containerBig">
           <form className="flex flex-col max-w-xs gap-2 pt-4 md:flex-row md:max-w-lg md:flex-wrap justify-center items-center">
             <div className="flex flex-col pb-4">
               <label className="label" htmlFor="nome">
