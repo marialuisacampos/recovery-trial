@@ -7,7 +7,7 @@ type Props = {};
 
 const Videos = (props: Props) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pb-20 pt-36">
       <Header />
       <main className="sm:flex sm:flex-1">
         <Video />
