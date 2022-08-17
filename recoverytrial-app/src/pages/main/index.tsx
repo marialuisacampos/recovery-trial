@@ -16,7 +16,7 @@ export default function Main() {
             <Navbar />
             <div className="flex  h-screen bg-black justify-center items-center">
 
-                <div className="bg-gray-600 mt-24 w-4/5 h-3/4 rounded-md">
+                <div className="bg-gray-600 mt-24 w-2/5 h-2/4 md:w-4/5 md:h-3/4 lg:w-4/5 lg:h-3/4 rounded-md ">
                     {
 
                     }
