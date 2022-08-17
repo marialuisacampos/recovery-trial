@@ -7,7 +7,7 @@ type Props = {};
 const PlayerVideo = (props: Props) => {
   return (
     <Player>
-      <Youtube videoId="7N9IIOIxu8w" />
+      <Youtube videoId="bHjIKhKnehM" />
       <DefaultUi />
     </Player>
   );
