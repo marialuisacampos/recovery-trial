@@ -1,5 +1,5 @@
 import React from "react";
-
+import "@vime/core/themes/default.css";
 type Props = {};
 
 const Video = (props: Props) => {
