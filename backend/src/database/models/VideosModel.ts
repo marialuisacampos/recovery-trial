@@ -10,6 +10,11 @@ export const UserModel = db.define("videos", {
   },
   link: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  titulo: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   idTreino: {
     type: DataTypes.INTEGER,
