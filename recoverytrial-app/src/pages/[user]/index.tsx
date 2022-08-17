@@ -14,18 +14,19 @@ export default function User(){
                     <div className="bg-gray-400 w-screen flex flex-col items-center ">
 
                         <p className="mt-10 mr- font-bold text-blue-200 text-lg">Informações pessoais</p>
-                        <div className=" w-3/4 h-80 flex flex-row gap-32 border-t-2 border-pink-100 justify-center items-centerfirst-letter
+
+                        <div className=" md:w-3/4 md:flex-row md:gap-11 lg:w-3/4 lg:h-80 flex lg:flex-row flex-col lg:gap-32 border-t-2 border-pink-100 justify-center items-centerfirst-letter
                         mb-16">
                             
                             <div className=" flex flex-col gap-1 mt-3">
                                 <label htmlFor="fieldName"> Nome </label>
-                                <input type="text" className="w-80" id='fieldName' />
+                                <input type="text" className="md:w-80 lg:w-80" id='fieldName' />
 
                                 <label htmlFor="fieldLastName"> Sobrenome </label>
                                 <input type="text" id='fieldLastName' />
 
                                 <label htmlFor="fildMail"> Email </label>
-                                <input type="mail" className="w-80" id='fieldMail' />
+                                <input type="mail" className="lg:w-80" id='fieldMail' />
 
                                 <label htmlFor="fildNumber"> Número </label>
                                 <input type="text" id='fieldNumber' />
@@ -34,12 +35,12 @@ export default function User(){
                             <div className="flex flex-col gap-1 mt-3">
 
                                 <label htmlFor="fieldNewPassword"> Nova senha </label>
-                                <input type="password" className="w-80" id='fieldNewPassword' />
+                                <input type="password" className="md:w-80 lg:w-80" id='fieldNewPassword' />
 
                                 <label htmlFor="fildNewPasswordC"> Confirmação de senha </label>
                                 <input type="password" id='fieldNewPasswordC' />
 
-                                <button className="mt-28 m-auto bg-blue-200 rounded-3xl w-40 h-8 hover:bg-blue-100
+                                <button className="md:mt-28 lg:mt-28 mt-10 m-auto bg-blue-200 rounded-3xl w-40 h-8 hover:bg-blue-100
                                 transition duration-75"
                                 ><p className="text-white">Salvar</p></button>
 
@@ -49,7 +50,8 @@ export default function User(){
                         </div>
                         
                         <p className="-mr- font-bold text-blue-200 text-lg">Seus treinamentos</p>
-                        <div className="w-3/4 h-1/4 flex flex-row  border-t-2  border-pink-100">
+                        <div className="lg:w-3/4 lg:h-1/4 flex lg:flex-row flex-col border-t-2  border-pink-100">
+                            
                         </div>
 
                     </div>
