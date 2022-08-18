@@ -8,7 +8,7 @@ export const UserModel = db.define("videos", {
     allowNull: false,
     primaryKey: true,
   },
-  link: {
+  videoId: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -16,11 +16,8 @@ export const UserModel = db.define("videos", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  idTreino: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: "training",
-      key: "id",
-    },
+  categoria: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
 });
