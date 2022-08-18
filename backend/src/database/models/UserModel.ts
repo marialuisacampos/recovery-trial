@@ -15,6 +15,7 @@ export const UserModel = db.define("user", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true
   },
   senha: {
     type: DataTypes.STRING,
