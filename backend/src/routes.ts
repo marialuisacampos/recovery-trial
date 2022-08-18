@@ -1,7 +1,6 @@
 import express from "express";
 import UsersController from "./controllers/UsersConstroller";
 import VideosController from "./controllers/VideosController";
-import TrainingsController from "./controllers/TrainingsController";
 
 const router = express.Router();
 
@@ -17,10 +16,5 @@ router.get("/videos", VideosController.findAll);
 router.put("/videos/:video", VideosController.update);
 router.delete("/videos/:video", VideosController.delete);
 
-router.post("/trainings", TrainingsController.create);
-router.get("/trainings/:trainingCategory", TrainingsController.findOne);
-router.get("/trainings", TrainingsController.findAll);
-router.put("/trainings/:trainingCategory", TrainingsController.update);
-router.delete("/trainings/:trainingCategory", TrainingsController.delete);
 
 export { router };
