@@ -20,4 +20,8 @@ export const UserModel = db.define("videos", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+},{
+  timestamps: false,
+  createdAt: false,
+  updatedAt: false,
 });
