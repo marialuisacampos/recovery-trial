@@ -6,7 +6,7 @@ class UserController {
     const users = await UserModel.findAll();
     return users.length > 0
       ? res.status(200).json(users)
-      : res.status(204).send();
+      : res.status(204).send({message:'vazio'});
   }
 
   async findOne(req: Request, res: Response) {
