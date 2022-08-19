@@ -4,14 +4,16 @@ const Player = dynamic(() => import("./Player"), {
   ssr: false,
 });
 
-type Props = {};
+interface Props {
+  videoId: string;
+}
 
-const Video = (props: Props) => {
+const Video = ({ videoId }: Props) => {
   return (
     <div className="flex-1">
       <div className="bg-white text-slate-500 flex justify-center">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-          <Player />
+          <Player videoId={videoId} />
         </div>
       </div>
 

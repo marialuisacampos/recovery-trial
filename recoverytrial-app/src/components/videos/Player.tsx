@@ -2,12 +2,14 @@ import React from "react";
 import { DefaultUi, Player, Youtube } from "@vime/react";
 import "@vime/core/themes/default.css";
 
-type Props = {};
+interface Props {
+  videoId: string;
+}
 
-const PlayerVideo = (props: Props) => {
+const PlayerVideo = ({ videoId }: Props) => {
   return (
     <Player>
-      <Youtube videoId="bHjIKhKnehM" />
+      <Youtube videoId={videoId} />
       <DefaultUi />
     </Player>
   );
