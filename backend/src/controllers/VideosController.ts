@@ -35,5 +35,7 @@ class VideosController {
 
   async delete(req: Request, res: Response) {}
 
+}
+
 
 export default new VideosController();

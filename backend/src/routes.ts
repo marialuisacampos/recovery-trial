@@ -1,12 +1,9 @@
 import express from "express";
 import UsersController from "./controllers/UsersConstroller";
 import VideosController from "./controllers/VideosController";
-<<<<<<< HEAD
-=======
 import AuthController from "./controllers/AuthController";
 import userAuth from "./middlewares/auth";
 
->>>>>>> main
 
 const router = express.Router();
 
