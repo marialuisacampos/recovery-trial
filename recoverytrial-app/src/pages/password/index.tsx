@@ -23,8 +23,8 @@ const Forgot = (props: Props) => {
   return (
     <div>
       <Navbar />
-      <main className="">
-        <div className="bg-gray-300 flex flex-col max-w-[300px] mt-56 mb-44 m-auto px-8 rounded-xl justify-center items-center md:pb-2 md:max-w-sm pt-4 pb-4">
+      <main>
+        <div className="bg-gray-300 flex flex-col max-w-[300px] mt-56 mb-44 m-auto px-8 rounded-xl justify-center items-center md:pb-2 md:max-w-sm pt-4">
           <LogoName />
           <form className="flex flex-col max-w-xs gap-2 pt-4">
             <h2 className="font-bold mx-2">Problemas para entrar?</h2>
