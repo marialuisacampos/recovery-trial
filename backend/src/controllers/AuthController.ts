@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 
 class AuthController {
     async store(req: Request, res: Response, next: NextFunction){
+        console.log(req.body);
         const {email, senha} = req.body;
         const secret = process.env.SECRET;
 
