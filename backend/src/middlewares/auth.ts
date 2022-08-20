@@ -7,7 +7,7 @@ async function userAuth(req: Request, res: Response, next: NextFunction) {
         const {authorization} = req.headers;
         const secret = process.env.SECRET;
 
-        if(!authorization) return req.status(401).json({message:'token is required'});
+        if(!authorization) return req.status(401).json({message:'Token is required'});
 
         const [ ,token] = authorization.split(' ');
 
@@ -17,11 +17,6 @@ async function userAuth(req: Request, res: Response, next: NextFunction) {
         } catch (error) {
             return res.status(401).json({message:'Token is required'});
         }
-        // if (!token) return res.status(401).end();
-
-        //await jwt.verify(token, secret, (err, data)=>{
-            
-        //})
 
     } catch (error) {
         return error;

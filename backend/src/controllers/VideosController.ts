@@ -17,7 +17,6 @@ class VideosController {
   async findOne(req: Request, res: Response) {
     const videoid = req.params.id
     const tag = req.params.tag
-    console.log(videoid)
     const video = await UserModel.findOne({
       where:{
         videoId: videoid 
