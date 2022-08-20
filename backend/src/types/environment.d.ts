@@ -8,6 +8,16 @@ declare global {
       DATABASE_USER: string;
       DATABASE_PASS: string;
       DATABASE_PORT: number;
+      SECRET: string;
     }
   }
+
+  namespace Express {
+    interface Request {
+      headers: {authorization: string};
+      status
+    }
+    
+  }
+  
 }
