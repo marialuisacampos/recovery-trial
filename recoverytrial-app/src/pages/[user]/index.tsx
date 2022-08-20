@@ -51,12 +51,19 @@ export default function User() {
                 </button>
               </div>
             </div>
-
             <p className="-mr- font-bold text-blue-200 text-lg">
               Seus treinamentos
             </p>
             <div className="lg:w-3/4 lg:h-1/4 flex lg:flex-row flex-col border-t-2  border-pink-100"></div>
           </div>
+        </div>
+        <div className="flex justify-center items-center">
+          <button
+            className="m-auto bg-blue-200 rounded-3xl w-40 h-8 hover:bg-blue-100
+                                transition duration-75 my-4 text-white"
+          >
+            Sair
+          </button>
         </div>
       </main>
       <Footer />
