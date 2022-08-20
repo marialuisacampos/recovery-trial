@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserModel } from "../database/models/UserModel";
+import bcrypt from 'bcrypt';
 
 class UserController {
   async findAll(req: Request, res: Response) {
@@ -16,10 +17,14 @@ class UserController {
         email: userEmail,
       },
     });
+
+    if(!user) return res.status(204).json({message:'user not found'})
+
     return user ? res.status(200).json(user) : res.status(204).send();
   }
 
   async create(req: Request, res: Response) {
+    console.log(req.body);
     const {
       nome,
       email,
@@ -38,11 +43,16 @@ class UserController {
       doencas_pulmonares,
       ultimo_acesso,
     } = req.body;
+    
+  
+    const passwordHash = await bcrypt.hash(senha, 8);
+
+    
 
     const user = await UserModel.create({
       nome,
       email,
-      senha,
+      senha: passwordHash,
       telefone,
       idade,
       sexo,
@@ -61,15 +71,25 @@ class UserController {
   }
 
   async update(req: Request, res: Response) {
-    const { userEmail } = req.params;
-    await UserModel.update(req.body, { where: { email: userEmail } });
-    return res.status(204);
+    const {userEmail} = req.params;
+    const {senha} = req.body;
+    const senhaHash = await bcrypt.hash(senha, 8)
+
+    await UserModel.update({
+      senha: senhaHash
+    },
+    {
+      where: {
+        email: userEmail
+       }
+    });
+    return res.status(200).json({message:"Password Updated"});
   }
 
   async delete(req: Request, res: Response) {
     const { userEmail } = req.params;
     await UserModel.destroy({ where: { email: userEmail } });
-    return res.status(204).send();
+    return res.status(204).json({message:"Password Updated"});
   }
 }
 
