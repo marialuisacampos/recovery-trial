@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import {UserModel} from '../database/models/VideosModel';
-import userAuth from "../middlewares/auth";
 
 class VideosController {
   async findAll(req: Request, res: Response) {
@@ -29,12 +28,12 @@ class VideosController {
       : res.status(204).json({message: "Usuário não encontrado!"});
   }
 
+
   async create(req: Request, res: Response) {}
   
   async update(req: Request, res: Response) {}
 
   async delete(req: Request, res: Response) {}
 
-}
 
 export default new VideosController();

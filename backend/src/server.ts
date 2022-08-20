@@ -6,14 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-
-
-
-
-
-
-
-
 app.listen(3001, async () => {
   await db.sync();
   console.log(`App running on port 3000!`);
