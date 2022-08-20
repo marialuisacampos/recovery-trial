@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../components/Button";
-import Error from "../../components/Error";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
-import Input from "../../components/Input";
-import LogoName from "../../components/logos/LogoName";
-import Label from "../../components/Label";
+import Button from "../../../components/Button";
+import Error from "../../../components/Error";
+import Footer from "../../../components/Footer";
+import Navbar from "../../../components/Navbar";
+import Input from "../../../components/Input";
+import LogoName from "../../../components/logos/LogoName";
+import Label from "../../../components/Label";
 
 interface Props {}
 

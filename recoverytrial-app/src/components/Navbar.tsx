@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
 import LogoHorizontal from "./logos/LogoHorizontal";
 import LogoUFRPE from "./logos/LogoUFRPE";
@@ -31,20 +32,18 @@ const Navbar = () => {
           }`}
         >
           <li className="md:ml-8 text-xl md:my-0 my-7">
-            <a
-              href="#"
-              className="text-blue-200 font-bold hover:text-pink-100 transition-all"
-            >
-              Home
-            </a>
+            <Link href="/login">
+              <span className="text-blue-200 font-bold hover:text-pink-100 transition-all cursor-pointer">
+                Home
+              </span>
+            </Link>
           </li>
           <li className="md:ml-8 text-xl">
-            <a
-              className="text-blue-200 font-bold hover:text-pink-100 transition-all"
-              href="#"
-            >
-              Saiba mais
-            </a>
+            <Link href="/about">
+              <span className="text-blue-200 font-bold hover:text-pink-100 transition-all cursor-pointer">
+                Saiba mais
+              </span>
+            </Link>
           </li>
         </ul>
       </div>

@@ -1,16 +1,27 @@
 import { Request, Response } from "express";
 import {UserModel} from '../database/models/VideosModel';
+<<<<<<< HEAD
+=======
 import userAuth from "../middlewares/auth";
+>>>>>>> main
 
 class VideosController {
   async findAll(req: Request, res: Response) {
     const tag = req.params
+<<<<<<< HEAD
+    const videos = await UserModel.findAll({
+      where: {
+        categoria: tag
+      }
+    });
+=======
     // const videos = await UserModel.findAll({
     //   where: {
     //     categoria: tag
     //   }
     // });
     const videos = await UserModel.findAll();
+>>>>>>> main
     return videos.length > 0 ?
       res.status(200).json(videos)
       : res.status(204).send({message:'Bancao vazio!'});
@@ -28,12 +39,24 @@ class VideosController {
       : res.status(204).json({message: "Usuário não encontrado!"});
   }
 
+<<<<<<< HEAD
+  async create(req: Request, res: Response) {
+  }
+  
+  async update(req: Request, res: Response) {
+
+  }
+  async delete(req: Request, res: Response) {
+
+  }
+=======
   async create(req: Request, res: Response) {}
   
   async update(req: Request, res: Response) {}
 
   async delete(req: Request, res: Response) {}
 
+>>>>>>> main
 }
 
 export default new VideosController();
