@@ -71,4 +71,8 @@ export const UserModel = db.define("user", {
   ultimo_acesso: {
     type: DataTypes.DATE,
   },
+},{
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
 });
