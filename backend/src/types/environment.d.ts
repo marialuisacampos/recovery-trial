@@ -9,15 +9,14 @@ declare global {
       DATABASE_PASS: string;
       DATABASE_PORT: number;
       SECRET: string;
+      SENDGRID_API_KEY: string;
     }
   }
 
   namespace Express {
     interface Request {
-      headers: {authorization: string};
-      status
+      headers: { authorization: string };
+      status;
     }
-    
   }
-  
 }

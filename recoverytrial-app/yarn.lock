@@ -212,7 +212,7 @@
     "mitt" "^3.0.0"
     "stencil-wormhole" "^3.4.1"
 
-"@vime/react@^5.3.1":
+"@vime/react@^5.0.31":
   "integrity" "sha512-MnWua6FCQ84af1k4jan1aaLmL57UF2WKwqhw8fw9PQ3Rz7W+vdPEb9VmNnyNZ3PessQRg5O7R94QRvUNKqkGog=="
   "resolved" "https://registry.npmjs.org/@vime/react/-/react-5.3.1.tgz"
   "version" "5.3.1"
