@@ -2,6 +2,7 @@ import {compare} from "bcrypt";
 import { Request, Response, NextFunction } from "express";
 import { UserModel } from "../database/models/UserModel";
 import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 
 class AuthController {
     async store(req: Request, res: Response, next: NextFunction){
@@ -25,7 +26,7 @@ class AuthController {
 
         if(!isValidPassword) return res.status(204).json({message:'user not found'});
 
-        const token = jwt.sign({id: userId}, '1234123', {
+        const token = jwt.sign({id: userId}, secret, {
             expiresIn: '7d'
         });
         
