@@ -8,5 +8,5 @@ app.use(router);
 
 app.listen(3001, async () => {
   await db.sync();
-  console.log(`App running on port 3000!`);
+  console.log(`App running on port 3001!`);
 });
