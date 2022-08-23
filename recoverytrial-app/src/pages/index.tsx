@@ -1,23 +1,36 @@
 import type { NextPage } from "next";
 import React, { useState, useEffect } from "react";
-import Button from "../../components/Button";
-import Error from "../../components/Error";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
-import Input from "../../components/Input";
-import LogoName from "../../components/logos/LogoName";
-import Label from "../../components/Label";
+import Button from "../components/Button";
+import Error from "../components/Error";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Input from "../components/Input";
+import LogoName from "../components/logos/LogoName";
+import Label from "../components/Label";
 import Link from "next/link";
+import { useAuth } from "../context/AuthProvider/useAuth";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const auth = useAuth();
+  console.log(auth.authenticate);
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const handleLogin = (e: any) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
     if (!email || !password) {
       setError("Preencha todos os campos.");
+    }
+
+    try {
+      const response = await auth.authenticate(email, password);
+      console.log(response);
+      setError("loguei!");
+    } catch (error) {
+      setError("Email ou senha inválido.");
     }
   };
 
