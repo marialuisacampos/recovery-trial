@@ -14,9 +14,12 @@ import { useRouter } from "next/router";
 const Home: NextPage = () => {
   const auth = useAuth();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   console.log(auth.authenticate);
 >>>>>>> 03c6020 (Add auth provider)
+=======
+>>>>>>> 845c670 (Init get request ate page main)
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -30,6 +33,7 @@ const Home: NextPage = () => {
 
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
       await auth.authenticate(email, password);
       router.push(`/main/${email}`);
     } catch (error) {
@@ -40,6 +44,12 @@ const Home: NextPage = () => {
       setError("loguei!");
     } catch (error) {
 >>>>>>> 03c6020 (Add auth provider)
+=======
+      await auth.authenticate(email, password);
+      router.push(`/main/${email}`);
+    } catch (error) {
+      console.log(error);
+>>>>>>> 845c670 (Init get request ate page main)
       setError("Email ou senha inválido.");
     }
   };
