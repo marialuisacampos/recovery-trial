@@ -1,16 +1,24 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+import { useState } from "react";
+>>>>>>> 03c6020 (Add auth provider)
 import { GetServerSideProps } from "next";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Muscular from "../../components/cards/Muscular";
 import Breath from "../../components/cards/Breath";
 import Memory from "../../components/cards/Memory";
+<<<<<<< HEAD
 import { useRouter } from "next/router";
 import axios from "axios";
+=======
+>>>>>>> 03c6020 (Add auth provider)
 
 type Props = {};
 
 export default function Main() {
+<<<<<<< HEAD
   const router = useRouter();
   const { user } = router.query;
 
@@ -30,6 +38,8 @@ export default function Main() {
     fetchData();
   }, []);
 
+=======
+>>>>>>> 03c6020 (Add auth provider)
   return (
     <div>
       <Navbar />
