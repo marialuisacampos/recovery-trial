@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, response } from "express";
 import jwt from "jsonwebtoken";
+import 'dotenv/config';
 
 async function userAuth(req: Request, res: Response, next: NextFunction) {
   try {
@@ -12,7 +13,7 @@ async function userAuth(req: Request, res: Response, next: NextFunction) {
     const [, token] = authorization.split(" ");
 
     try {
-      await jwt.verify(token, "1234123");
+      await jwt.verify(token, secret);
       next();
     } catch (error) {
       return res.status(401).json({ message: "Token is required" });
