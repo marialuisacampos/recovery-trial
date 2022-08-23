@@ -1,10 +1,14 @@
 import { Request, Response } from "express";
 import sgMail from "@sendgrid/mail";
+import 'dotenv/config';
 
 class EmailSender {
   async sendmail(req: Request, res: Response) {
+    
+    const key = process.env.SENDGRID_API_KEY;
+
     sgMail.setApiKey(
-      "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"
+      key
     );
 
     const msg = req.body;
