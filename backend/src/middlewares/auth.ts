@@ -16,6 +16,7 @@ async function userAuth(req: Request, res: Response, next: NextFunction) {
       await jwt.verify(token, secret);
       next();
     } catch (error) {
+      console.log(error)
       return res.status(401).json({ message: "Token is required" });
     }
   } catch (error) {
