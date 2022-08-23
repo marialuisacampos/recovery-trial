@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { UserModel } from "../database/models/UserModel";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 class UserController {
   async findAll(req: Request, res: Response) {
     const users = await UserModel.findAll();
     return users.length > 0
       ? res.status(200).json(users)
-      : res.status(204).send({message:'vazio'});
+      : res.status(204).send({ message: "vazio" });
   }
 
   async findOne(req: Request, res: Response) {
@@ -18,7 +18,7 @@ class UserController {
       },
     });
 
-    if(!user) return res.status(204).json({message:'user not found'});
+    if (!user) return res.status(204).json({ message: "user not found" });
 
     return user ? res.status(200).json(user) : res.status(204).send();
   }
@@ -41,21 +41,19 @@ class UserController {
         diabetes,
         doenca_cardiovasculares,
         doencas_pulmonares,
-        ultimo_acesso,
       } = req.body;
 
       const isAlreadyUsed = await UserModel.findOne({
         where: {
-          email: email
-        }
+          email: email,
+        },
       });
 
-      if(isAlreadyUsed) return res.status(400).json({message:"email already used"});
-      
-    
+      if (isAlreadyUsed)
+        return res.status(400).json({ message: "email already used" });
+
       const passwordHash = await bcrypt.hash(senha, 8);
-  
-  
+
       const user = await UserModel.create({
         nome,
         email,
@@ -72,70 +70,65 @@ class UserController {
         diabetes,
         doenca_cardiovasculares,
         doencas_pulmonares,
-        ultimo_acesso,
       });
       return res.status(201).json(user);
-  
-      
     } catch (error) {
-      return res.status(400).json({message:'Bad Request'})
+      return res.status(400).json({ message: "Bad Request" });
     }
   }
 
   async updatePassword(req: Request, res: Response) {
     try {
-      const {userEmail} = req.params;
-      const {senha} = req.body;
-      const senhaHash = await bcrypt.hash(senha, 8)
-  
-      await UserModel.update({
-        senha: senhaHash
-      },
-      {
-        where: {
-          email: userEmail
-         }
-      });
-      return res.status(200).json({message:"Password Updated"});
-        
-    } catch (error) {
-      return res.status(400).json({message:"Bad request"});      
-    }
+      const { userEmail } = req.params;
+      const { senha } = req.body;
+      const senhaHash = await bcrypt.hash(senha, 8);
 
+      await UserModel.update(
+        {
+          senha: senhaHash,
+        },
+        {
+          where: {
+            email: userEmail,
+          },
+        }
+      );
+      return res.status(200).json({ message: "Password Updated" });
+    } catch (error) {
+      return res.status(400).json({ message: "Bad request" });
+    }
   }
 
-  async update(req: Request, res: Response){
+  async update(req: Request, res: Response) {
     try {
-      const {id, email, nome, telefone} = req.body;
+      const { id, email, nome, telefone } = req.body;
 
-      const newUser = await UserModel.update({
-        nome: nome,
-        email: email,
-        telefone: telefone
-      },{
-        where:{
-          id: id
+      const newUser = await UserModel.update(
+        {
+          nome: nome,
+          email: email,
+          telefone: telefone,
+        },
+        {
+          where: {
+            id: id,
+          },
         }
-      })
-  
-      return res.status(200).json({message:"user updated successfully"});
-        
+      );
+
+      return res.status(200).json({ message: "user updated successfully" });
     } catch (error) {
-
-      return res.status(400).json({message: "Bad request"});
-
+      return res.status(400).json({ message: "Bad request" });
     }
-
   }
 
   async delete(req: Request, res: Response) {
     try {
       const { userEmail } = req.params;
       await UserModel.destroy({ where: { email: userEmail } });
-      return res.status(204).json({message:"Password Updated"});
-        
+      return res.status(204).json({ message: "Password Updated" });
     } catch (error) {
-      return res.status(400).json({message:"Bad Request"});      
+      return res.status(400).json({ message: "Bad Request" });
     }
   }
 }
