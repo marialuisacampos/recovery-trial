@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/router"
 
-interface Props {}
+interface Props { }
 
 const Signup = (props: Props) => {
   const router = useRouter()
@@ -32,15 +32,9 @@ const Signup = (props: Props) => {
   const [sucesso, setSucesso] = useState<string>("");
 
   const sendData = async (data: object) => {
-    const userLogged = localStorage.getItem("u");
-    const userLoggedObject = JSON.parse(userLogged!);
 
     const response = await axios.post("http://localhost:3001/users/singUp",
-      data, {
-      headers: {
-        "authorization": `Bearer ${userLoggedObject.token}`,
-      }
-    })
+      data)
 
     return response
   }
@@ -96,11 +90,11 @@ const Signup = (props: Props) => {
     if (response.status == 201) {
       setSucesso("Cadastro realizado com sucesso. Estamos te direcionando para o login.")
       setError("")
-      setTimeout(()=>router.push("/"), 3000)
+      setTimeout(() => router.push("/"), 3000)
     } else {
       setError("Algo deu errado, tente novamente mais tarde.")
     }
-    
+
 
   };
 
@@ -464,7 +458,7 @@ const Signup = (props: Props) => {
 
             <div className="flex flex-col">
               <Error Message={error} />
-              <span className="text-green-600 mb-2">{sucesso}</span>
+              <span className="text-green-600 mb-2 text-center">{sucesso}</span>
 
               <Button Text="Registrar" onClick={handleRegister} Type="submit" />
             </div>
