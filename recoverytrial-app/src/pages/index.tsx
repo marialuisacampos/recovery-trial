@@ -24,6 +24,7 @@ const Home: NextPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<string>("");
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ const Home: NextPage = () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
       await auth.authenticate(email, password);
+      setLoading("Carregando...")
       router.push(`/main/${email}`);
     } catch (error) {
       console.log(error);
@@ -77,6 +79,7 @@ const Home: NextPage = () => {
               onChange={(e) => [setPassword(e.target.value), setError("")]}
             />
             <Error Message={error} />
+            <span className="text-green-600 mb-2 text-center">{loading}</span>
             <Button Type="submit" Text="Entrar" onClick={handleLogin} />
           </form>
 
