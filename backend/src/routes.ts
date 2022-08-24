@@ -31,10 +31,6 @@ router.get("/videos/:tag/:id", userAuth, VideosController.findOne);
 //rota retorna todos os vídeos de uma categoria específica
 router.get("/videos/:tag", userAuth, VideosController.findAll);
 
-//rotas não utilizadas no momento
-router.post("/videos", VideosController.create);
-router.put("/videos/:video", VideosController.update);
-router.delete("/videos/:video", VideosController.delete);
 
 //rota para enviar email
 router.post("/email/send", EmailController.sendmail);
