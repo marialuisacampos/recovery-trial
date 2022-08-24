@@ -21,7 +21,6 @@ export default function Main() {
   const fetchData = async () => {
     const userLogged = localStorage.getItem("u");
     const userLoggedObject = JSON.parse(userLogged!);
-
     const requestUser = await axios.get(`http://localhost:3001/users/${user}`, {
       headers: {
         'authorization': `Bearer ${userLoggedObject.token}`,
@@ -37,12 +36,15 @@ export default function Main() {
     if (userData.acidente_em_12_meses) { treinos.push("equilibrio") }
 
     userData.p_atividade_fisica ? setNivel("avancado") : setNivel("iniciante")
+
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
+  
+  console.log(nivel)
   return (
     <div>
       <Navbar />
