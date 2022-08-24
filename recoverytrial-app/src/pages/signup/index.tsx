@@ -4,10 +4,13 @@ import Error from "../../components/Error";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useRouter } from "next/router"
 
 interface Props {}
 
 const Signup = (props: Props) => {
+  const router = useRouter()
   const [nome, setNome] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
@@ -26,8 +29,23 @@ const Signup = (props: Props) => {
   const [doencasPulmonares, setDoencasPulmonares] = useState<boolean>();
 
   const [error, setError] = useState<string>("");
+  const [sucesso, setSucesso] = useState<string>("");
 
-  const handleRegister = (e: any) => {
+  const sendData = async (data: object) => {
+    const userLogged = localStorage.getItem("u");
+    const userLoggedObject = JSON.parse(userLogged!);
+
+    const response = await axios.post("http://localhost:3001/users/singUp",
+      data, {
+      headers: {
+        "authorization": `Bearer ${userLoggedObject.token}`,
+      }
+    })
+
+    return response
+  }
+
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     const regexEmail =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -55,6 +73,35 @@ const Signup = (props: Props) => {
     if (email && !email.match(regexEmail)) {
       setError("Digite um email válido");
     }
+
+    setError("")
+    const response = await sendData({
+      nome,
+      email,
+      senha,
+      telefone,
+      idade,
+      sexo,
+      p_atividade_fisica: praticaAtividade,
+      fraqueza_muscular: fraquezaMuscular,
+      dificuldade_respiratoria: dificuldadeRespiratoria,
+      perda_de_memoria: perdaDeMemoria,
+      acidente_em_12_meses: acidenteEm12Meses,
+      hipertensao,
+      diabetes,
+      doenca_cardiovasculares: doencasCardio,
+      doencas_pulmonares: doencasPulmonares
+    })
+
+    if (response.status == 201) {
+      setSucesso("Cadastro realizado com sucesso. Estamos te direcionando para o login.")
+      setError("")
+      setTimeout(()=>router.push("/"), 3000)
+    } else {
+      setError("Algo deu errado, tente novamente mais tarde.")
+    }
+    
+
   };
 
   return (
@@ -417,6 +464,7 @@ const Signup = (props: Props) => {
 
             <div className="flex flex-col">
               <Error Message={error} />
+              <span className="text-green-600 mb-2">{sucesso}</span>
 
               <Button Text="Registrar" onClick={handleRegister} Type="submit" />
             </div>
