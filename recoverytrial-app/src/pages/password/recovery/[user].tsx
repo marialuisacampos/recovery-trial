@@ -7,7 +7,7 @@ import Input from "../../../components/Input";
 import LogoName from "../../../components/logos/LogoName";
 import Label from "../../../components/Label";
 
-interface Props {}
+interface Props { }
 
 const Recover = (props: Props) => {
   const [password, setPassword] = useState<string>("");
@@ -23,6 +23,8 @@ const Recover = (props: Props) => {
     if (!password || !confirmPassword) {
       setError("Preencha todos os campos");
     }
+
+
   };
 
   return (
