@@ -30,7 +30,6 @@ const Home: NextPage = () => {
       setLoading("Carregando...")
       router.push(`/main/${email}`);
     } catch (error) {
-      console.log(error);
       setError("Email ou senha inválido.");
     }
   };
@@ -38,6 +37,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setError("");
   }, []);
+
   return (
     <div className=" pt-44">
       <Navbar />

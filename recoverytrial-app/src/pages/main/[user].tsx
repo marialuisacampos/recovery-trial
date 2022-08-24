@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Footer from "../../components/Footer";
@@ -20,7 +21,6 @@ export default function Main() {
   const fetchData = async () => {
     const userLogged = localStorage.getItem("u");
     const userLoggedObject = JSON.parse(userLogged!);
-    
     const requestUser = await axios.get(`http://localhost:3001/users/${user}`, {
       headers: {
         'authorization': `Bearer ${userLoggedObject.token}`,
@@ -37,7 +37,6 @@ export default function Main() {
 
     userData.p_atividade_fisica ? setNivel("avancado") : setNivel("iniciante")
 
-    console.log(nivel)
   };
 
   useEffect(() => {
