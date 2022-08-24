@@ -3,7 +3,7 @@ import { DefaultUi, Player, Youtube } from "@vime/react";
 import "@vime/core/themes/default.css";
 
 interface Props {
-  videoId: string;
+  videoId?: any;
 }
 
 const PlayerVideo = ({ videoId }: Props) => {
