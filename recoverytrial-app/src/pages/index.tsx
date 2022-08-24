@@ -13,13 +13,6 @@ import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const auth = useAuth();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  console.log(auth.authenticate);
->>>>>>> 03c6020 (Add auth provider)
-=======
->>>>>>> 845c670 (Init get request ate page main)
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -33,25 +26,10 @@ const Home: NextPage = () => {
     }
 
     try {
-<<<<<<< HEAD
-<<<<<<< HEAD
       await auth.authenticate(email, password);
       setLoading("Carregando...")
       router.push(`/main/${email}`);
     } catch (error) {
-      console.log(error);
-=======
-      const response = await auth.authenticate(email, password);
-      console.log(response);
-      setError("loguei!");
-    } catch (error) {
->>>>>>> 03c6020 (Add auth provider)
-=======
-      await auth.authenticate(email, password);
-      router.push(`/main/${email}`);
-    } catch (error) {
-      console.log(error);
->>>>>>> 845c670 (Init get request ate page main)
       setError("Email ou senha inválido.");
     }
   };
@@ -59,6 +37,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     setError("");
   }, []);
+
   return (
     <div className=" pt-44">
       <Navbar />

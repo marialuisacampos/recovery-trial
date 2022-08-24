@@ -19,11 +19,7 @@ export function getUserLocalStorage() {
 
 export async function LoginRequest(email: string, senha: string) {
   try {
-<<<<<<< HEAD
-    const request = await Api.post("login", { email, senha });
-=======
     const request = await Api.post("/users/login", { email, senha });
->>>>>>> 845c670 (Init get request ate page main)
     return request.data;
   } catch (error) {
     return null;

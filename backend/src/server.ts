@@ -13,7 +13,7 @@ app.use(
 );
 app.use(router);
 
-app.listen(3001, async () => {
+app.listen(8080, async () => {
   await db.sync();
   console.log(`App running on port 3001!`);
 });
