@@ -2,6 +2,7 @@ import express from "express";
 import { db } from "./database/db";
 import { router } from "./routes";
 import cors from "cors";
+import 'dotenv/config';
 
 const app = express();
 app.use(express.json());
@@ -13,7 +14,9 @@ app.use(
 );
 app.use(router);
 
-app.listen(3001, async () => {
+const serverPort = process.env.SERVER_PORT;
+
+app.listen(serverPort || 3001, async () => {
   await db.sync();
-  console.log(`App running on port 3001!`);
+  console.log(`App running`);
 });
