@@ -14,7 +14,6 @@ router.post("/users/login", AuthController.store);
 //rota de atualização de senha
 router.put(
   "/users/password/:userEmail",
-  userAuth,
   UsersController.updatePassword
 );
 //rota de atualização de dados do usuário
