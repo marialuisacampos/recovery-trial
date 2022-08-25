@@ -12,7 +12,6 @@ import { useAuth } from "../../context/AuthProvider/useAuth";
 
 export default function User() {
   const auth = useAuth()
-  console.log(auth)
   const [nome, setNome] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [telefone, setTelefone] = useState<string>("")
@@ -40,7 +39,6 @@ export default function User() {
         'authorization': `Bearer ${userLogged!.token}`,
       }
     })
-    console.log(responseUpdateUser)
 
     if (responseUpdateUser.status == 200) {
       setSucesso("Usuário atualizado com sucesso")
@@ -101,15 +99,13 @@ export default function User() {
               </div>
 
               <div className="underline text-pink-100 cursor-pointer mt-4">
-                <Link href={`http://localhost:3001/main/${user}`}>
+                <Link href={`/main/${user}`}>
                   Conferir meus treinos
                 </Link>
               </div>
 
               <div className="underline text-pink-100 cursor-pointer mt-4" onClick={handleLogout}>
-                <Link href={`http://localhost:3001/main/${user}`}>
-                  Sair da minha conta
-                </Link>
+                Sair da minha conta
               </div>
             </div>
           </div>
