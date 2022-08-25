@@ -5,18 +5,38 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Input from "../../components/Input";
 import LogoName from "../../components/logos/LogoName";
+import axios from "axios";
+import { useRouter } from "next/router"
 
-interface Props {}
+interface Props { }
 
 const Forgot = (props: Props) => {
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [sucesso, setSucesso] = useState<string>("");
 
-  const handleForgot = (e: any) => {
+  const handleForgot = async (e: any) => {
     e.preventDefault();
+
     if (!email) {
       setError("Preencha o seu email");
       return;
+    }
+
+    const response = await axios.post("http://localhost:3001/email/send", {
+      to: email,
+      from: "recoverytrialapp@hotmail.com",
+      subject: "Recuperação de senha",
+      text: `Acesse este link para recuperar a sua senha: http://localhost:3001/password/recovery/${email}`
+    })
+
+    if (response.status == 200) {
+      setError("")
+      setSucesso("Pronto! Confira seu email.")
+      setTimeout(() => router.push("/"), 3000)
+    } else {
+      setError("Algo deu errado.")
     }
   };
 
@@ -38,6 +58,7 @@ const Forgot = (props: Props) => {
               onChange={(e) => [setEmail(e.target.value), setError("")]}
             />
             <Error Message={error} />
+            <span className="text-green-600 mb-2 text-center">{sucesso}</span>
             <Button Type="submit" onClick={handleForgot} Text="Enviar" />
           </form>
         </div>

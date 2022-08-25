@@ -6,15 +6,20 @@ import Navbar from "../../../components/Navbar";
 import Input from "../../../components/Input";
 import LogoName from "../../../components/logos/LogoName";
 import Label from "../../../components/Label";
+import { useRouter } from "next/router"
+import axios from "axios";
 
-interface Props {}
+interface Props { }
 
 const Recover = (props: Props) => {
+  const router = useRouter()
+  const { user } = router.query;
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [sucesso, setSucesso] = useState<string>("");
 
-  const handleRecover = (e: any) => {
+  const handleRecover = async (e: any) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       setError("As senhas precisam ser iguais");
@@ -23,6 +28,19 @@ const Recover = (props: Props) => {
     if (!password || !confirmPassword) {
       setError("Preencha todos os campos");
     }
+
+    const response = await axios.put(`http://localhost:3001/users/password/${user}`, {
+      senha: password
+    })
+
+    if (response.status == 200) {
+      setSucesso("Senha alterada com sucesso.")
+      setError("")
+      setTimeout(() => router.push("/"), 3000)
+    } else {
+      setError("Algo deu errado.")
+    }
+
   };
 
   return (
@@ -48,6 +66,7 @@ const Recover = (props: Props) => {
               ]}
             />
             <Error Message={error} />
+            <span className="text-green-600 mb-2 break-words text-center">{sucesso}</span>
             <Button
               Type="submit"
               Text="Alterar a senha"
