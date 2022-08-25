@@ -1,9 +1,7 @@
 import React, { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-const Player = dynamic(() => import("./Player"), {
-  ssr: false,
-});
+import Player from "./Player"
 
 interface Props {
   video?: any;
@@ -12,7 +10,7 @@ interface Props {
 const Video = ({ video }: Props) => {
   return (
     <div className="flex-1">
-      <div className="bg-white text-slate-500 flex justify-center">
+      <div className=" text-slate-500 flex justify-center">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
           <Player videoId={video.videoId} />
         </div>

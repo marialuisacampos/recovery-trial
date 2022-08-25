@@ -8,7 +8,7 @@ interface Props {
 
 const PlayerVideo = ({ videoId }: Props) => {
   return (
-    <Player>
+    <Player autoplay={true}>
       <Youtube videoId={videoId} />
       <DefaultUi />
     </Player>
