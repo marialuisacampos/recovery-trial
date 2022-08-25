@@ -310,7 +310,7 @@ const Signup = (props: Props) => {
 
               <div className="mb-4">
                 <span className="label">
-                  Sofreu algum acidente nos últimos 12 meses?
+                  Sofreu alguma queda nos últimos 12 meses?
                 </span>
                 <div>
                   <label className="mr-2" htmlFor="sim">
