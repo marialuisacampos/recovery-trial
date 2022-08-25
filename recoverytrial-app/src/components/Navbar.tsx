@@ -3,8 +3,10 @@ import Link from "next/link";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
 import LogoHorizontal from "./logos/LogoHorizontal";
 import LogoUFRPE from "./logos/LogoUFRPE";
+import { useAuth } from "../context/AuthProvider/useAuth";
 
 const Navbar = () => {
+  const auth = useAuth();
   const [open, setOpen] = useState(false);
 
   return (
@@ -27,9 +29,8 @@ const Navbar = () => {
           )}
         </div>
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-20 " : "top-[-490px]"
-          }`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
+            }`}
         >
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <Link href="/login">
@@ -38,13 +39,19 @@ const Navbar = () => {
               </span>
             </Link>
           </li>
-          <li className="md:ml-8 text-xl">
+          <li className="md:ml-8 text-xl md:my-0 my-7">
             <Link href="/about">
               <span className="text-blue-200 font-bold hover:text-pink-100 transition-all cursor-pointer">
                 Saiba mais
               </span>
             </Link>
           </li>
+          {
+            auth.token && <li className="md:ml-8 text-xl md:my-0 my-7"><Link href={`/user/${auth.email}`}><span className="text-blue-300 font-bold hover:text-pink-200 transition-all cursor-pointer">Perfil</span></Link></li>
+          }
+          {
+            auth.token && <li className="md:ml-8 text-xl md:my-0 my-7"><Link href={`/main/${auth.email}`}><span className="text-blue-300 font-bold hover:text-pink-100 transition-all cursor-pointer">Treinos</span></Link></li>
+          }
         </ul>
       </div>
     </nav>
