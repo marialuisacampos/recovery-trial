@@ -14,7 +14,7 @@ app.use(
 );
 app.use(router);
 
-const serverPort = process.env.SERVER_PORT;
+const serverPort = process.env.PORT;
 
 app.listen(serverPort || 3001, async () => {
   await db.sync();
