@@ -10,7 +10,7 @@ declare global {
       DATABASE_PORT: number;
       SECRET: string;
       SENDGRID_API_KEY: string;
-      PORT: string;
+      SERVER_PORT: string;
     }
   }
 
