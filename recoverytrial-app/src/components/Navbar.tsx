@@ -4,10 +4,17 @@ import { IoIosClose, IoIosMenu } from "react-icons/io";
 import LogoHorizontal from "./logos/LogoHorizontal";
 import LogoUFRPE from "./logos/LogoUFRPE";
 import { useAuth } from "../context/AuthProvider/useAuth";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const auth = useAuth();
+  const router = useRouter()
   const [open, setOpen] = useState(false);
+
+  const handleLogout = () => {
+    auth.logout();
+    router.push('/')
+  }
 
   return (
     <nav className="shadow-md w-full fixed top-0 left-0 z-50">
@@ -47,10 +54,13 @@ const Navbar = () => {
             </Link>
           </li>
           {
-            auth.token && <li className="md:ml-8 text-xl md:my-0 my-7"><Link href={`/user/${auth.email}`}><span className="text-blue-300 font-bold hover:text-pink-200 transition-all cursor-pointer">Perfil</span></Link></li>
+            auth.token && <li className="md:ml-8 text-xl md:my-0 my-7"><Link href={`/user/${auth.email}`}><span className="text-blue-300 font-bold hover:text-pink-100 transition-all cursor-pointer">Perfil</span></Link></li>
           }
           {
             auth.token && <li className="md:ml-8 text-xl md:my-0 my-7"><Link href={`/main/${auth.email}`}><span className="text-blue-300 font-bold hover:text-pink-100 transition-all cursor-pointer">Treinos</span></Link></li>
+          }
+          {
+            auth.token && <li className="md:ml-8 text-xl md:my-0 my-7"><span className="text-blue-300 font-bold hover:text-pink-100 transition-all cursor-pointer" onClick={handleLogout}>Sair da conta</span></li>
           }
         </ul>
       </div>

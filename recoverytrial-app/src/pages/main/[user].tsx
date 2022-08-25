@@ -10,6 +10,7 @@ import Flexibilidade from "../../components/cards/Flexibility";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image"
+import { useAuth } from "../../context/AuthProvider/useAuth";
 
 interface Props {
   links: any
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export default function Main({ treinos, links }: Props) {
+  const auth = useAuth()
 
   const isForca = treinos.includes("forca")
   const isFlexibilidade = treinos.includes("flexibilidade")
@@ -26,10 +28,12 @@ export default function Main({ treinos, links }: Props) {
 
   return (
     <div>
-      <Navbar />
-      <div className="flex bg-blue-200 justify-center items-center pb-10">
+      <div className="flex bg-blue-300 justify-center items-center pb-10">
+        <Navbar />
         <div className="bg-gray-300 flex flex-col max-w-[350px] m-auto mt-40 pt-4 px-8 rounded-xl justify-center items-center pb-4 md:pb-2 md:max-w-4xl">
+          <h1 className="text-center text-xl md:text-2xl text-pink-100 mb-8">{`Oi! Vamos nos movimentar? Estes foram os treinos indicados para você:`}</h1>
           <div className="flex gap-4 flex-wrap justify-center items-center">
+
             {
               isForca && (
                 <Link href={`/training/forca/${links["forca"]}`}>
@@ -82,7 +86,9 @@ export default function Main({ treinos, links }: Props) {
             }
           </div>
         </div>
+
       </div>
+      <Footer />
     </div >
   )
 }
