@@ -21,7 +21,7 @@ export default function User() {
     e.preventDefault()
 
     const userLogged = getUserLocalStorage()
-    const responseGetUser = await axios.get(`http://localhost:3001/users/${userLogged!.user}`, {
+    const responseGetUser = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/users/${userLogged!.user}`, {
       headers: {
         'authorization': `Bearer ${userLogged!.token}`,
       }
@@ -29,7 +29,7 @@ export default function User() {
 
     const userData = responseGetUser.data
 
-    const responseUpdateUser = await axios.put("http://localhost:3001/users/update/", {
+    const responseUpdateUser = await axios.put("https://recovery-app-ufrpe.herokuapp.com/users/update/", {
       id: userData.id,
       nome,
       email,
@@ -91,6 +91,7 @@ export default function User() {
                   value={telefone}
                   onChange={(e) => [setTelefone(e.target.value)]}
                 />
+                <p className="text-green-500 my-4">{sucesso}</p>
               </div>
 
               <div className="flex flex-col gap-1 mt-3">

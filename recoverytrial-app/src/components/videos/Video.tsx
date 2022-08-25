@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const Player = dynamic(() => import("./Player"), {
   ssr: false,
 });
@@ -21,7 +22,8 @@ const Video = ({ video }: Props) => {
         <div className="md:flex md:items-start gap-16">
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-blue-200">{video.titulo}</h1>
-            <p className="mt-4 leading-relaxed">{video.nivel}</p>
+            <p className="mt-4 leading-relaxed">{`Treino de ${video.categoria} de nível ${video.nivel}`}</p>
+
           </div>
         </div>
       </div>

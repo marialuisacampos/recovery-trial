@@ -28,9 +28,9 @@ export default function Main({ treinos, links }: Props) {
 
   return (
     <div>
-      <div className="flex bg-blue-300 justify-center items-center pb-10">
+      <div className="flex bg-blue-300 justify-center items-center pb-10 md:pb-60">
         <Navbar />
-        <div className="bg-gray-300 flex flex-col max-w-[350px] m-auto mt-40 pt-4 px-8 rounded-xl justify-center items-center pb-4 md:pb-2 md:max-w-4xl">
+        <div className="bg-gray-300 flex flex-col max-w-[350px] m-auto mt-40 pt-4 px-8 rounded-xl justify-center items-center pb-4 md:pb-8 md:max-w-4xl">
           <h1 className="text-center text-xl md:text-2xl text-pink-100 mb-8">{`Oi! Vamos nos movimentar? Estes foram os treinos indicados para você:`}</h1>
           <div className="flex gap-4 flex-wrap justify-center items-center">
 
@@ -94,7 +94,7 @@ export default function Main({ treinos, links }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const user = context.params.user;
+  const user = context.params?.user;
 
   let treinos = ["flexibilidade", "forca"]
   let links = {
@@ -107,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const token = context.req.cookies["token"]
 
-  const userRequest = await axios.get(`http://localhost:3001/users/${user}`, {
+  const userRequest = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/users/${user}`, {
     headers: {
       'authorization': `Bearer ${token}`,
     },
@@ -115,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (userRequest.data.perda_de_memoria) {
     treinos.push("dualtask")
-    const fetchVideos = await axios.get(`http://localhost:3001/videos/dualtask`, {
+    const fetchVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/dualtask`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
@@ -125,7 +125,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (userRequest.data.dificuldade_respiratoria) {
     treinos.push("aerobio")
-    const fetchVideos = await axios.get(`http://localhost:3001/videos/aerobio`, {
+    const fetchVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/aerobio`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
@@ -135,7 +135,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (userRequest.data.acidente_em_12_meses) {
     treinos.push("equilibrio")
-    const fetchVideos = await axios.get(`http://localhost:3001/videos/equilibrio`, {
+    const fetchVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/equilibrio`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
@@ -143,18 +143,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     links["equilibrio"] = fetchVideos.data[0].videoId
   }
 
-  const fetchVideosFlexibilidade = await axios.get(`http://localhost:3001/videos/flexibilidade`, {
+  const fetchVideosFlexibilidade = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/flexibilidade`, {
     headers: {
       'authorization': `Bearer ${token}`,
     },
   });
   links["flexibilidade"] = fetchVideosFlexibilidade.data[0].videoId
+  console.log(fetchVideosFlexibilidade)
 
-  const fetchVideosForca = await axios.get(`http://localhost:3001/videos/forca`, {
+  const fetchVideosForca = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/forca`, {
     headers: {
       'authorization': `Bearer ${token}`,
     },
   });
+
   links["forca"] = fetchVideosForca.data[0].videoId
 
   return {

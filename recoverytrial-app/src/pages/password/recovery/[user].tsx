@@ -29,7 +29,7 @@ const Recover = (props: Props) => {
       setError("Preencha todos os campos");
     }
 
-    const response = await axios.put(`http://localhost:3001/users/password/${user}`, {
+    const response = await axios.put(`https://recovery-app-ufrpe.herokuapp.com/users/password/${user}`, {
       senha: password
     })
 

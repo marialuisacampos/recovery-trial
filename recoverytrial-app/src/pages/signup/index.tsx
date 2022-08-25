@@ -33,7 +33,7 @@ const Signup = (props: Props) => {
 
   const sendData = async (data: object) => {
 
-    const response = await axios.post("http://localhost:3001/users/singUp",
+    const response = await axios.post("https://recovery-app-ufrpe.herokuapp.com/users/singUp",
       data)
 
     return response

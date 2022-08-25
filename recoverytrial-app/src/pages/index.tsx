@@ -38,6 +38,10 @@ const Home: NextPage = () => {
     setError("");
   }, []);
 
+  if (auth.token) {
+    router.push(`/main/${auth.email}`)
+  }
+
   return (
     <div className=" pt-44">
       <Navbar />

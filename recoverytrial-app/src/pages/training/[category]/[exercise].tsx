@@ -17,18 +17,18 @@ const Videos = (props: Props) => {
 
   const router = useRouter();
   const { category, exercise } = router.query;
-  console.log(category, exercise)
+  console.log(typeof (exercise))
 
   const fetchVideos = async () => {
     const userLogged = getUserLocalStorage()
-    const fetchallVideos = await axios.get(`http://localhost:3001/videos/${category}`, {
+    const fetchallVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/${category}`, {
       headers: {
         'authorization': `Bearer ${userLogged!.token}`,
       },
     });
     setVideos(fetchallVideos.data)
 
-    const fetchVideo = await axios.get(`http://localhost:3001/videos/${category}/${exercise}`, {
+    const fetchVideo = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/${category}/${exercise}`, {
       headers: {
         'authorization': `Bearer ${userLogged!.token}`,
       },
