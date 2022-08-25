@@ -7,6 +7,7 @@ import Input from "../../components/Input";
 import LogoName from "../../components/logos/LogoName";
 import axios from "axios";
 import { useRouter } from "next/router"
+import 'dotenv/config';
 
 interface Props { }
 
@@ -24,7 +25,7 @@ const Forgot = (props: Props) => {
       return;
     }
 
-    const response = await axios.post("https://recovery-app-ufrpe.herokuapp.com/email/send", {
+    const response = await axios.post(`${process.env.API}/email/send`, {
       to: email,
       from: "recoverytrialapp@hotmail.com",
       subject: "Recuperação de senha",

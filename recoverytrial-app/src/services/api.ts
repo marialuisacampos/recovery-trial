@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getUserLocalStorage } from "../context/AuthProvider/util";
+import 'dotenv/config';
 
 export const Api = axios.create({
-  baseURL: "https://recovery-app-ufrpe.herokuapp.com/",
+  baseURL: process.env.API,
 });

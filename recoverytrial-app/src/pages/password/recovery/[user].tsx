@@ -8,6 +8,7 @@ import LogoName from "../../../components/logos/LogoName";
 import Label from "../../../components/Label";
 import { useRouter } from "next/router"
 import axios from "axios";
+import 'dotenv/config';
 
 interface Props { }
 
@@ -29,7 +30,7 @@ const Recover = (props: Props) => {
       setError("Preencha todos os campos");
     }
 
-    const response = await axios.put(`https://recovery-app-ufrpe.herokuapp.com/users/password/${user}`, {
+    const response = await axios.put(`${process.env.API}/users/password/${user}`, {
       senha: password
     })
 
