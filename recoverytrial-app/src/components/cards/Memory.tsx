@@ -3,7 +3,7 @@ import React from "react";
 export default function MemoryCard() {
     return (
         <div style={{
-            backgroundImage: 'url(/memoryCard.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
+            backgroundImage: 'url(/dualtask.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
             height: '150px', borderRadius: '5px', padding: '50px'
         }}>
             <a href="">
