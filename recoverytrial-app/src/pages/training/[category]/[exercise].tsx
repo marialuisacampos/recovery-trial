@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import ProtectedLayout from "../../../components/ProtectedLayout";
 import axios from "axios";
 import { useAuth } from "../../../context/AuthProvider/useAuth";
+import { getUserLocalStorage } from "../../../context/AuthProvider/util";
 
 type Props = {};
 
@@ -19,18 +20,17 @@ const Videos = (props: Props) => {
   console.log(category, exercise)
 
   const fetchVideos = async () => {
-    const userLogged = localStorage.getItem("u");
-    const userLoggedObject = JSON.parse(userLogged!);
+    const userLogged = getUserLocalStorage()
     const fetchallVideos = await axios.get(`http://localhost:3001/videos/${category}`, {
       headers: {
-        'authorization': `Bearer ${userLoggedObject.token}`,
+        'authorization': `Bearer ${userLogged!.token}`,
       },
     });
     setVideos(fetchallVideos.data)
 
     const fetchVideo = await axios.get(`http://localhost:3001/videos/${category}/${exercise}`, {
       headers: {
-        'authorization': `Bearer ${userLoggedObject.token}`,
+        'authorization': `Bearer ${userLogged!.token}`,
       },
     });
     setVideo(fetchVideo.data);
