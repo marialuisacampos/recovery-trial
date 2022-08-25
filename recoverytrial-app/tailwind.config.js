@@ -16,6 +16,7 @@ module.exports = {
         blue: {
           100: "#91D8DF", //mais claro
           200: "#34B8C4", //mais escuro
+          300: "#1f3274" //logo
         },
         gray: {
           100: "#ECECEC", //background
@@ -25,7 +26,7 @@ module.exports = {
           600: "#D7D6D6", //stroke
         },
       },
-      backgroundImage:{
+      backgroundImage: {
         'backgroundMain': "url('/backgroundMain.jpg')",
       }
     },
