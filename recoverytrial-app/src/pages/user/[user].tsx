@@ -1,10 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Input from "../../components/Input";
 import ProtectedLayout from "../../components/ProtectedLayout";
+import axios from "axios";
+import { getUserLocalStorage } from "../../context/AuthProvider/util";
+import Button from "../../components/Button";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useAuth } from "../../context/AuthProvider/useAuth";
 
 export default function User() {
+  const auth = useAuth()
+  console.log(auth)
+  const [nome, setNome] = useState<string>("")
+  const [email, setEmail] = useState<string>("")
+  const [telefone, setTelefone] = useState<string>("")
+  const [sucesso, setSucesso] = useState<string>("")
+
+  const handleUpdate = async (e: any) => {
+    e.preventDefault()
+
+    const userLogged = getUserLocalStorage()
+    const responseGetUser = await axios.get(`http://localhost:3001/users/${userLogged!.user}`, {
+      headers: {
+        'authorization': `Bearer ${userLogged!.token}`,
+      }
+    })
+
+    const userData = responseGetUser.data
+
+    const responseUpdateUser = await axios.put("http://localhost:3001/users/update/", {
+      id: userData.id,
+      nome,
+      email,
+      telefone,
+    }, {
+      headers: {
+        'authorization': `Bearer ${userLogged!.token}`,
+      }
+    })
+    console.log(responseUpdateUser)
+
+    if (responseUpdateUser.status == 200) {
+      setSucesso("Usuário atualizado com sucesso")
+    }
+  }
+
+  const handleLogout = async (e: any) => {
+    e.preventDefault()
+
+    auth.logout()
+
+    router.push("/")
+  }
+
+  const router = useRouter()
+  const { user } = router.query
+
   return (
     <div>
       <Navbar />
@@ -25,53 +78,41 @@ export default function User() {
                   type="text"
                   className="md:w-80 lg:w-80"
                   id="fieldName"
+                  value={nome}
+                  onChange={(e) => [setNome(e.target.value)]}
                 />
 
-                <label htmlFor="fieldLastName"> Sobrenome </label>
-                <input type="text" id="fieldLastName" />
-
                 <label htmlFor="fildMail"> Email </label>
-                <input type="mail" className="lg:w-80" id="fieldMail" />
+                <input type="mail" className="lg:w-80" id="fieldMail"
+                  value={email}
+                  onChange={(e) => [setEmail(e.target.value)]}
+                />
 
-                <label htmlFor="fildNumber"> Número </label>
-                <input type="text" id="fieldNumber" />
+                <label htmlFor="fildNumber"> Telefone </label>
+                <input type="text" id="fieldNumber"
+                  value={telefone}
+                  onChange={(e) => [setTelefone(e.target.value)]}
+                />
               </div>
 
               <div className="flex flex-col gap-1 mt-3">
-                <label htmlFor="fieldNewPassword"> Nova senha </label>
-                <input
-                  type="password"
-                  className="md:w-80 lg:w-80"
-                  id="fieldNewPassword"
-                />
 
-                <label htmlFor="fildNewPasswordC">
-                  {" "}
-                  Confirmação de senha{" "}
-                </label>
-                <input type="password" id="fieldNewPasswordC" />
+                <Button Text="Atualizar perfil" onClick={handleUpdate} Type="submit" />
+              </div>
 
-                <button
-                  className="md:mt-28 lg:mt-28 mt-10 m-auto bg-blue-200 rounded-3xl w-40 h-8 hover:bg-blue-100
-                                transition duration-75"
-                >
-                  <p className="text-white">Salvar</p>
-                </button>
+              <div className="underline text-pink-100 cursor-pointer mt-4">
+                <Link href={`http://localhost:3001/main/${user}`}>
+                  Conferir meus treinos
+                </Link>
+              </div>
+
+              <div className="underline text-pink-100 cursor-pointer mt-4" onClick={handleLogout}>
+                <Link href={`http://localhost:3001/main/${user}`}>
+                  Sair da minha conta
+                </Link>
               </div>
             </div>
-            <p className="-mr- font-bold text-blue-200 text-lg">
-              Seus treinamentos
-            </p>
-            <div className="lg:w-3/4 lg:h-1/4 flex lg:flex-row flex-col border-t-2  border-pink-100"></div>
           </div>
-        </div>
-        <div className="flex justify-center items-center">
-          <button
-            className="m-auto bg-blue-200 rounded-3xl w-40 h-8 hover:bg-blue-100
-                                transition duration-75 my-4 text-white"
-          >
-            Sair
-          </button>
         </div>
       </main>
       <Footer />
