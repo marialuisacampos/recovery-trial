@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import Player from "./Player"
+const Player = dynamic(() => import("./Player"), {
+  ssr: false,
+});
 
 interface Props {
   video?: any;
