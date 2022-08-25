@@ -3,7 +3,7 @@ import React from "react";
 export default function BalanceCard() {
   return (
     <div style={{
-      backgroundImage: 'url(/balanceCard.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
+      backgroundImage: 'url(/equilibrio.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
       height: '150px', borderRadius: '5px', padding: '50px'
     }}>
       <a href="">

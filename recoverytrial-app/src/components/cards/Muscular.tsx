@@ -5,7 +5,7 @@ import React from "react";
 export default function MuscleCard() {
     return (
         <div style={{
-            backgroundImage: 'url(/muscleCard.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
+            backgroundImage: 'url(/forca.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
             height: '150px', borderRadius: '5px', padding: '50px'
         }}>
             <a href="">

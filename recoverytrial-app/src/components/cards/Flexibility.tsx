@@ -3,7 +3,7 @@ import React from "react";
 export default function FlexibilityCard() {
   return (
     <div style={{
-      backgroundImage: 'url(/flexibilityCard.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
+      backgroundImage: 'url(/flexibilidade.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', width: '250px',
       height: '150px', borderRadius: '5px', padding: '50px'
     }}>
       <a href="">
