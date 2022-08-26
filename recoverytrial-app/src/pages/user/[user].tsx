@@ -22,7 +22,7 @@ export default function User() {
     e.preventDefault()
 
     const userLogged = getUserLocalStorage()
-    const responseGetUser = await axios.get(`${process.env.API}/users/${userLogged!.user}`, {
+    const responseGetUser = await axios.get(`${process.env.NEXT_PUBLIC_API}/users/${userLogged!.user}`, {
       headers: {
         'authorization': `Bearer ${userLogged!.token}`,
       }
@@ -30,7 +30,7 @@ export default function User() {
 
     const userData = responseGetUser.data
 
-    const responseUpdateUser = await axios.put(`${process.env.API}/users/update/`, {
+    const responseUpdateUser = await axios.put(`${process.env.NEXT_PUBLIC_API}/users/update/`, {
       id: userData.id,
       nome,
       email,

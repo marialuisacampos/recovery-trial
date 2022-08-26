@@ -35,7 +35,7 @@ const Signup = (props: Props) => {
 
   const sendData = async (data: object) => {
 
-    const response = await axios.post(`${process.env.API}/users/singUp`,
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/users/singUp`,
       data)
 
     return response

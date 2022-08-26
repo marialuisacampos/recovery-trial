@@ -3,5 +3,5 @@ import { getUserLocalStorage } from "../context/AuthProvider/util";
 import 'dotenv/config';
 
 export const Api = axios.create({
-  baseURL: process.env.API,
+  baseURL: process.env.NEXT_PUBLIC_API,
 });

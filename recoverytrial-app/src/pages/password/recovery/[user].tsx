@@ -30,7 +30,7 @@ const Recover = (props: Props) => {
       setError("Preencha todos os campos");
     }
 
-    const response = await axios.put(`${process.env.API}/users/password/${user}`, {
+    const response = await axios.put(`${process.env.NEXT_PUBLIC_API}/users/password/${user}`, {
       senha: password
     })
 

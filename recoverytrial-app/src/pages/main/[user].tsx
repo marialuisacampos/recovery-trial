@@ -25,7 +25,7 @@ export default function Main({ treinos, links }: Props) {
   const isFlexibilidade = treinos.includes("flexibilidade")
   const isEquilibrio = treinos.includes("equilibrio")
   const isDualtask = treinos.includes("dualtask")
-  const isAerobio = treinos.includes("aerobio")
+  const isAerobico = treinos.includes("aerobico")
 
   return (
     <div>
@@ -76,10 +76,10 @@ export default function Main({ treinos, links }: Props) {
               )
             }
             {
-              isAerobio && (
-                <Link href={`/training/aerobio/${links["aerobio"]}`}>
+              isAerobico && (
+                <Link href={`/training/aerobico/${links["aerobico"]}`}>
                   <div className="cursor-pointer">
-                    <h2 className="title">Treinos de Aeróbio</h2>
+                    <h2 className="title">Treinos de Aeróbico</h2>
                     <Aerobio />
                   </div>
                 </Link>
@@ -102,7 +102,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     flexibilidade: "",
     forca: "",
     dualtask: "",
-    aerobio: "",
+    aerobico: "",
     equilibrio: ""
   }
 
@@ -125,13 +125,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   if (userRequest.data.dificuldade_respiratoria) {
-    treinos.push("aerobio")
-    const fetchVideos = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/aerobio`, {
+    treinos.push("aerobico")
+    const fetchVideos = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/aerobico`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
     });
-    links["aerobio"] = fetchVideos.data[0].videoId
+    links["aerobico"] = fetchVideos.data[0].videoId
   }
 
   if (userRequest.data.acidente_em_12_meses) {

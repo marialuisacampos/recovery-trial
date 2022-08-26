@@ -39,13 +39,16 @@ const Navbar = () => {
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? "top-20 " : "top-[-490px]"
             }`}
         >
-          <li className="md:ml-8 text-xl md:my-0 my-7">
-            <Link href="/login">
-              <span className="text-blue-200 font-bold hover:text-pink-100 transition-all cursor-pointer">
-                Home
-              </span>
-            </Link>
-          </li>
+          {
+            !auth.token && <li className="md:ml-8 text-xl md:my-0 my-7">
+              <Link href="/">
+                <span className="text-blue-200 font-bold hover:text-pink-100 transition-all cursor-pointer">
+                  Home
+                </span>
+              </Link>
+            </li>
+          }
+
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <Link href="/about">
               <span className="text-blue-200 font-bold hover:text-pink-100 transition-all cursor-pointer">
