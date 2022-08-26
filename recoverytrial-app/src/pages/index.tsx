@@ -23,14 +23,14 @@ const Home: NextPage = () => {
     e.preventDefault();
     if (!email || !password) {
       setError("Preencha todos os campos.");
-    }
-
-    try {
-      await auth.authenticate(email, password);
-      setLoading("Carregando...")
-      router.push(`/main/${email}`);
-    } catch (error) {
-      setError("Email ou senha inválido.");
+    } else {
+      try {
+        await auth.authenticate(email, password);
+        setLoading("Carregando...")
+        router.push(`/main/${email}`);
+      } catch (error) {
+        setError("Email ou senha inválido.");
+      }
     }
   };
 
@@ -84,7 +84,7 @@ const Home: NextPage = () => {
       </main>
       <Footer />
     </div>
-  );
+  )
 };
 
 export default Home;
