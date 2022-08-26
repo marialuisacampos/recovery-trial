@@ -9,6 +9,7 @@ import Button from "../../components/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthProvider/useAuth";
+import 'dotenv/config';
 
 export default function User() {
   const auth = useAuth()
@@ -21,7 +22,7 @@ export default function User() {
     e.preventDefault()
 
     const userLogged = getUserLocalStorage()
-    const responseGetUser = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/users/${userLogged!.user}`, {
+    const responseGetUser = await axios.get(`${process.env.NEXT_PUBLIC_API}/users/${userLogged!.user}`, {
       headers: {
         'authorization': `Bearer ${userLogged!.token}`,
       }
@@ -29,7 +30,7 @@ export default function User() {
 
     const userData = responseGetUser.data
 
-    const responseUpdateUser = await axios.put("https://recovery-app-ufrpe.herokuapp.com/users/update/", {
+    const responseUpdateUser = await axios.put(`${process.env.NEXT_PUBLIC_API}/users/update/`, {
       id: userData.id,
       nome,
       email,

@@ -11,6 +11,7 @@ import axios from "axios";
 import Link from "next/link";
 import Image from "next/image"
 import { useAuth } from "../../context/AuthProvider/useAuth";
+import "dotenv/config"
 
 interface Props {
   links: any
@@ -24,7 +25,7 @@ export default function Main({ treinos, links }: Props) {
   const isFlexibilidade = treinos.includes("flexibilidade")
   const isEquilibrio = treinos.includes("equilibrio")
   const isDualtask = treinos.includes("dualtask")
-  const isAerobio = treinos.includes("aerobio")
+  const isAerobico = treinos.includes("aerobico")
 
   return (
     <div>
@@ -75,10 +76,10 @@ export default function Main({ treinos, links }: Props) {
               )
             }
             {
-              isAerobio && (
-                <Link href={`/training/aerobio/${links["aerobio"]}`}>
+              isAerobico && (
+                <Link href={`/training/aerobico/${links["aerobico"]}`}>
                   <div className="cursor-pointer">
-                    <h2 className="title">Treinos de Aeróbio</h2>
+                    <h2 className="title">Treinos de Aeróbico</h2>
                     <Aerobio />
                   </div>
                 </Link>
@@ -101,13 +102,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     flexibilidade: "",
     forca: "",
     dualtask: "",
-    aerobio: "",
+    aerobico: "",
     equilibrio: ""
   }
 
   const token = context.req.cookies["token"]
 
-  const userRequest = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/users/${user}`, {
+  const userRequest = await axios.get(`${process.env.NEXT_PUBLIC_API}/users/${user}`, {
     headers: {
       'authorization': `Bearer ${token}`,
     },
@@ -115,7 +116,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (userRequest.data.perda_de_memoria) {
     treinos.push("dualtask")
-    const fetchVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/dualtask`, {
+    const fetchVideos = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/dualtask`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
@@ -124,18 +125,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   if (userRequest.data.dificuldade_respiratoria) {
-    treinos.push("aerobio")
-    const fetchVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/aerobio`, {
+    treinos.push("aerobico")
+    const fetchVideos = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/aerobico`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
     });
-    links["aerobio"] = fetchVideos.data[0].videoId
+    links["aerobico"] = fetchVideos.data[0].videoId
   }
 
   if (userRequest.data.acidente_em_12_meses) {
     treinos.push("equilibrio")
-    const fetchVideos = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/equilibrio`, {
+    const fetchVideos = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/equilibrio`, {
       headers: {
         'authorization': `Bearer ${token}`,
       },
@@ -143,7 +144,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     links["equilibrio"] = fetchVideos.data[0].videoId
   }
 
-  const fetchVideosFlexibilidade = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/flexibilidade`, {
+  const fetchVideosFlexibilidade = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/flexibilidade`, {
     headers: {
       'authorization': `Bearer ${token}`,
     },
@@ -151,7 +152,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   links["flexibilidade"] = fetchVideosFlexibilidade.data[0].videoId
   console.log(fetchVideosFlexibilidade)
 
-  const fetchVideosForca = await axios.get(`https://recovery-app-ufrpe.herokuapp.com/videos/forca`, {
+  const fetchVideosForca = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/forca`, {
     headers: {
       'authorization': `Bearer ${token}`,
     },

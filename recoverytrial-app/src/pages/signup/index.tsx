@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/router"
+import 'dotenv/config';
 
 interface Props { }
 
@@ -28,12 +29,13 @@ const Signup = (props: Props) => {
   const [doencasCardio, setDoencasCardio] = useState<boolean>();
   const [doencasPulmonares, setDoencasPulmonares] = useState<boolean>();
 
+
   const [error, setError] = useState<string>("");
   const [sucesso, setSucesso] = useState<string>("");
 
   const sendData = async (data: object) => {
 
-    const response = await axios.post("https://recovery-app-ufrpe.herokuapp.com/users/singUp",
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/users/singUp`,
       data)
 
     return response

@@ -7,6 +7,7 @@ import Input from "../../components/Input";
 import LogoName from "../../components/logos/LogoName";
 import axios from "axios";
 import { useRouter } from "next/router"
+import 'dotenv/config';
 
 interface Props { }
 
@@ -24,11 +25,11 @@ const Forgot = (props: Props) => {
       return;
     }
 
-    const response = await axios.post("https://recovery-app-ufrpe.herokuapp.com/email/send", {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/email/send`, {
       to: email,
       from: "recoverytrialapp@hotmail.com",
       subject: "Recuperação de senha",
-      text: `Acesse este link para recuperar a sua senha: https://www.recoverytrial.com/password/recovery/${email}`
+      text: `Acesse este link para recuperar a sua senha: http://localhost:3000/password/recovery/${email}`
     })
 
     if (response.status == 200) {
