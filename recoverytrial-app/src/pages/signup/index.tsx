@@ -32,7 +32,7 @@ const Signup = (props: Props) => {
 
   const [error, setError] = useState<string>("");
   const [sucesso, setSucesso] = useState<string>("");
-
+  console.log(email)
   const sendData = async (data: object) => {
 
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/users/singUp`,
@@ -128,7 +128,7 @@ const Signup = (props: Props) => {
                 type="text"
                 value={email}
                 name="email"
-                onChange={(e) => [setEmail(e.target.value), setError("")]}
+                onChange={(e) => [setEmail((e.target.value).toLowerCase()), setError("")]}
               />
             </div>
 

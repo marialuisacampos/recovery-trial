@@ -53,7 +53,7 @@ const Home: NextPage = () => {
             <Input
               Type="text"
               Value={email}
-              onChange={(e) => [setEmail(e.target.value), setError("")]}
+              onChange={(e) => [setEmail((e.target.value).toLowerCase()), setError("")]}
             />
             <Label Children="Senha" />
             <Input
