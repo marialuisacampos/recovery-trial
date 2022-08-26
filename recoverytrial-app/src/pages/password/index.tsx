@@ -29,7 +29,7 @@ const Forgot = (props: Props) => {
       to: email,
       from: "recoverytrialapp@hotmail.com",
       subject: "Recuperação de senha",
-      text: `Acesse este link para recuperar a sua senha: http://localhost:3000/password/recovery/${email}`
+      text: `Acesse este link para recuperar a sua senha: https://www.recoverytrial.com/password/recovery/${email}`
     })
 
     if (response.status == 200) {
