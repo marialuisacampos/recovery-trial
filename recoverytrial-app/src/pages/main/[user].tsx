@@ -150,7 +150,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   });
   links["flexibilidade"] = fetchVideosFlexibilidade.data[0].videoId
-  console.log(fetchVideosFlexibilidade)
 
   const fetchVideosForca = await axios.get(`${process.env.NEXT_PUBLIC_API}/videos/forca`, {
     headers: {

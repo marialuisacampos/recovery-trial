@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     const user = getUserLocalStorage();
 
     if (user) {
-      setUser(user);
+      logout()
     }
   }, []);
 
