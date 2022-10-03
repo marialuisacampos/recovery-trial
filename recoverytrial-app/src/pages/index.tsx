@@ -10,6 +10,7 @@ import Label from "../components/Label";
 import Link from "next/link";
 import { useAuth } from "../context/AuthProvider/useAuth";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   const auth = useAuth();
@@ -44,6 +45,9 @@ const Home: NextPage = () => {
 
   return (
     <div className=" pt-44">
+      <Head>
+        <title>Recovery Trial</title>
+      </Head>
       <Navbar />
       <main className="pb-24">
         <div className="bg-gray-300 flex flex-col max-w-[300px] mx-auto pt-2 rounded-xl justify-center items-center md:pb-2 md:max-w-sm">
